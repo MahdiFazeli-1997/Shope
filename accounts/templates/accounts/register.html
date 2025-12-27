@@ -2,9 +2,9 @@
 {% block title %}ثبت نام{% endblock %}
 {% block body %}
     <h1>register</h1>
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <button type="submit">register</button>
-</form>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <button type="submit">register</button>
+    </form>
 {% endblock %}

@@ -31,7 +31,8 @@ def user_login(request):
                 if user is not None:
                     login(request, user)
                     return redirect('home:home')
-                return render(request, 'accounts/login.html', {'form': form})
+        else:
+            return render(request, 'accounts/login.html', {'form': form})
 
     else:
         form = UserLoginForm()

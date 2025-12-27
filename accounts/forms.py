@@ -1,13 +1,15 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.forms import TextInput, EmailInput, PasswordInput
+
 
 class UserRegistrationForm(forms.Form):
-    username = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    password_1 = forms.CharField(max_length=50)
-    password_2 = forms.CharField(max_length=50)
+    username = forms.CharField(max_length=200,widget=TextInput(attrs={'placeholder':'Username'}))
+    email = forms.EmailField(max_length=200,widget=EmailInput(attrs={'placeholder':'Email'}))
+    first_name = forms.CharField(max_length=200,widget=TextInput(attrs={'placeholder':'First Name'}))
+    last_name = forms.CharField(max_length=200,widget=TextInput(attrs={'placeholder':'Last Name'}))
+    password_1 = forms.CharField(max_length=200,widget=PasswordInput(attrs={'placeholder':'Password'}))
+    password_2 = forms.CharField(max_length=200,widget=PasswordInput(attrs={'placeholder':'Confirm Password'}))
 
     def clean_username(self):
         # تعریف و ریختن مقداری که کاربر وارد کرده (به عنوان ولیو از لیست کیلیند دیتا) داخل متغیر یوزر
