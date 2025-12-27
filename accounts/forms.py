@@ -10,7 +10,9 @@ class UserRegistrationForm(forms.Form):
     password_2 = forms.CharField(max_length=50)
 
     def clean_username(self):
+        # تعریف و ریختن مقداری که کاربر وارد کرده (به عنوان ولیو از لیست کیلیند دیتا) داخل متغیر یوزر
         username = self.cleaned_data['username']
+        # از طریف مدیر بخش دیتا بیس یا همون مدل (آبجکتس) پیدا کردن یوزرنیم تکراری
         if User.objects.filter(username=username).exists():
             raise forms.ValidationError('Username already taken')
         return username
@@ -31,3 +33,7 @@ class UserRegistrationForm(forms.Form):
         elif not any (x.isupper for x in password_1):
             raise forms.ValidationError('Password must be at least one uppercase letter')
         return password_1
+
+class UserLoginForm(forms.Form):
+    user = forms.CharField(max_length=200)
+    password = forms.CharField(max_length=200)
