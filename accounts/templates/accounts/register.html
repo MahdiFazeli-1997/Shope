@@ -4,7 +4,16 @@
     <h1>register</h1>
     <form action="" method="post" novalidate>
         {% csrf_token %}
-        {{ form.as_ul }}
+        {{ form.username }}<br>
+        <br>
+        {{ form.email }}<br>
+        <br>
+        {{ form.first_name }}<br>
+        <br>
+        {{ form.last_name }}<br>
+        <br>
+        {{ form.password1 }}
+        {{ form.password2 }}
         <button type="submit">register</button>
     </form>
 {% endblock %}
